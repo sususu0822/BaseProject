@@ -11,7 +11,7 @@ int main() {
 #endif // TEST
 
 int addNumber(int a, int b) {
-    return a + b;
+    return a + b + a;
 }
 
 int getTriangleType(int a, int b, int c) {
