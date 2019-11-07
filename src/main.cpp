@@ -11,7 +11,11 @@ int main() {
 #endif // TEST
 
 int addNumber(int a, int b) {
+<<<<<<< HEAD
     return a + b + a;
+=======
+    return a - b;
+>>>>>>> 滑進勞改營
 }
 
 int getTriangleType(int a, int b, int c) {
