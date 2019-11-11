@@ -12,7 +12,7 @@ int main() {
 
 int addNumber(int a, int b) {
 
-    return a + b + a;
+    return a + b ;
 
 }
 
