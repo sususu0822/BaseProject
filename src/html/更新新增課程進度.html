@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+        <title>更新新增課程進度</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <h1>輸入</h1>
+            </div>
+            <div class="card">
+                <form action="../php/課表.php" onclick="return false" id="form1" name="form1">
+                    <div class="form-group">
+                        <label for="InputClassTime">課程時間</label>
+                        <input type="time" name="user_time">
+                        <label for="InputClassTime">課程名稱</label>                        
+                        <input type="text" name="user_name">
+                        <label for="InputClassTime">課程備忘錄</label>
+                        <input type="text" name="user_note">
+                        <input type="submit" name="button" id="button" value="送出">                        
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+                                $("#button").click(function() {
+                                    if($("user_time").val()==""){
+                                        alert("時間沒填");
+                                        eval("document.forml['user_time'].focus()");
+                                    }else if($("#user_name").val()==""){
+                                        alert("名子沒填");                                        
+                                        eval("document.forml['user_name'].focus()");
+                                    }else if($("#user_note").val()==""){
+                                        alert("備註沒填");                                        
+                                        eval("document.forml['user_note'].focus()");
+                                    }else{
+                                        document.form1.submit();
+                                    }
+                                })
+                            })
+                        </script>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
