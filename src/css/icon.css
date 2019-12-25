@@ -26,14 +26,14 @@
 }
 /*chat框框*/
 .chat-border {
-    border: 1px solid #ccc;
-    background-color: seagreen;
+    /*border: 1px solid #ccc;*/
+    /*background-color: seagreen;*/
     border-radius: 10px;
     margin: 5px 0px 5px;
   }
 /*通讯录*/ 
 #contacts {
-    background-color: saddlebrown;
+    /*background-color: saddlebrown;*/
     margin-top: 31px;
     padding-left: 5px;
 }
@@ -52,7 +52,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-/*图片圆框*/
+/*图片圆框 contact*/
 .p-img{
     border-radius: 50%;
     width: 60px;
@@ -68,13 +68,27 @@
 }
 
 
+/*图片圆框 chat*/
+.p-img-middle{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    transition: width 0.3s, height 0.3s,margin-top 0.3, margin-left 0.3;
+    margin: 9px 5px 9px -22px;
+}
+.profile-img-middle{
+    max-width: 40px;
+}
+/*图片圆框 chat*/
+
+
 table{
     width: 100%;
-    table-layout:fixed
+    table-layout:fixed;
 }
 table tr td{
-    border: 2px solid;
-    
+    border: 2px;
 }
 /*信息div*/
 .message1{
@@ -114,5 +128,65 @@ table tr td{
 }
 .sign-area{
     width: 30px;
-    background-color: darkgoldenrod;
+    /*background-color: darkgoldenrod;*/
 }
+
+/*大众 按钮 聊天框*/
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+/*按钮 id*/
+.button3 {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+  
+.button3:hover {background-color: #e7e7e7;}
+/*按钮 聊天框*/
+
+/*nav*/
+#navb {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 74.95%;
+  }
+  #navb li {
+    float: left;
+    list-style: none;
+    cursor: pointer;
+  }
+  
+  #navb li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  #navb li a:hover:not(.active) {
+    background-color: rgb(160, 121, 121);
+  }
+  
+  #navb .active {
+    background-color: rgb(32, 110, 255);
+  }
+  /*nav*/

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html class="height-full">
+
+<head>
+    <title>Chat</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon.css">
+    <link rel="stylesheet" type="text/css" href="../css/scroll.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        .height-full {
+            height: 100%;
+        }
+
+        #table1 {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        /* 三个区*/
+        #leftside {
+            position: relative;
+            overflow: scroll;
+            width: 25%;
+            float: left;
+            /*border: 1px solid #ccc;*/
+            border-radius: 5px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            /* -ms-overflow-style: none;
+            overflow: -moz-scrollbars-none;*/
+
+        }
+
+        /*#leftside::-webkit-scrollbar {
+            width: 0 !important
+        }*/
+
+        .middle {
+            width: auto;
+            margin-bottom: 0px;
+            overflow: hidden;
+            /*border: 1px solid #ccc;*/
+            border-radius: 5px;
+            padding-top: 3%;
+            padding-bottom: 10px;
+
+        }
+
+        .rightside {
+            width: 25%;
+            float: right;
+            /*border: 1px solid #ccc;*/
+            border-radius: 5px;
+            padding-top: 3%;
+            padding-bottom: 10px;
+            overflow: scroll;
+            -ms-overflow-style: none;
+            overflow: -moz-scrollbars-none;
+        }
+
+        #rightside::-webkit-scrollbar {
+            width: 0 !important
+        }
+        /* 三个区*/
+
+        /*选取 contact leftside*/
+        .nav li {
+            list-style: none;
+            cursor: pointer;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .nav li:hover {
+            border-left: 1px solid #ecebeb;
+            border-right: 1px solid #ecebeb;
+        }
+
+        .selected {
+            background-color: #ecebeb;
+            transition: 0.3s;
+        }
+
+        .content {
+            border: 1px solid #f4f4f4;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            //获取点击事件的对象
+            $(".nav li").click(function () {
+                //获取要显示或隐藏的对象
+                var divShow = $(".content").children('.list');
+                var divShow1 = $(".rightside").children('.list');
+                var divShow2 = $(".show-chat").children('.list');
+                //判断当前对象是否被选中，如果没选中的话进入if循环
+                if (!$(this).hasClass('selected')) {
+                    //获取当前对象的索引
+                    var index = $(this).index();
+                    //当前对象添加选中样式并且其同胞移除选中样式；
+                    $(this).addClass('selected').siblings('li').removeClass('selected');
+                    //索引对应的div块显示
+                    $(divShow[index]).show();
+                    $(divShow1[index]).show();
+                    $(divShow2[index]).show();
+                    //索引对应的div块的同胞隐藏
+                    $(divShow[index]).siblings('.list').hide();
+                    $(divShow1[index]).siblings('.list').hide();
+                    $(divShow2[index]).siblings('.list').hide();
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body class="height-full">
+    <div class="height-full" id="leftside">
+        <ul id="contacts" class="nav">
+
+            <li class="selected">
+                <div class="chat-border ">
+                    <table style="max-width: 100%;">
+                        <tr>
+                            <td style="width: 70px;">
+                                <div class="p-img">
+                                    <img src="../img/bro不要玩.jpg" alt="晓" style="height:60px">
+                                </div>
+                            </td>
+                            <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                                <div class="w3-hide-medium w3-hide-small message1">
+                                    <p>BRO</p>
+                                    <p>BRO不要玩~</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="chat-icon-size"></div>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </div>
+            </li>
+            <li>
+                <div class="chat-border">
+                    <table style="max-width: 100%;">
+                        <tr>
+                            <td style="width: 70px;">
+                                <div class="p-img">
+                                    <img src="../img/curry.jpg" alt="晓" style="width:80px">
+                                </div>
+                            </td>
+                            <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                                <div class="w3-hide-medium w3-hide-small message1">
+                                    <p>库里</p>
+                                    <p>偷偷告诉你，我一秒钟的薪水比你一年还多~</p>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </div>
+
+            </li>
+            <li>
+                <button class="button button3">
+                    <div class="chat-border">
+                        <table style="max-width: 100%;">
+                            <tr>
+                                <td style="width: 70px;">
+                                    <div class="p-img">
+                                        <img src="../img/水壶.jpg" alt="晓" class="profile-img imgup">
+                                    </div>
+                                </td>
+                                <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                                    <div class="w3-hide-medium w3-hide-small message1">
+                                        <p>你阿嫲击败</p>
+                                        <p>讲你两句就在那边静静。要怎样成功你~</p>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+
+                    </div>
+                </button>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/可愛女孩.jpg" alt="晓" class="profile-img">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>小童</p>
+                                <p>看什么看，没有看过美女啊~叫美女快点</p>
+                            </div>
+                        <td class="sign-area w3-hide-medium w3-hide-small">
+                            <div class="chat-icon-size w3-hide-medium w3-hide-small">
+                                <img id="read4" src="../img/可愛女孩.jpg" alt="晓" class="readed"
+                                    style="position: relative;top: -3px;">
+                            </div>
+
+
+                        </td>
+                        </td>
+
+                    </tr>
+                </table>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/可愛女孩.jpg" alt="晓" class="profile-img">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>小童</p>
+                                <p>看什么看，没有看过美女啊~叫美女快点</p>
+                            </div>
+                        <td class="sign-area w3-hide-medium w3-hide-small">
+                            <div class="chat-icon-size w3-hide-medium w3-hide-small">
+                                <img src="../img/可愛女孩.jpg" alt="晓" class="readed" style="position: relative;top: -3px;">
+                            </div>
+
+
+                        </td>
+                        </td>
+
+                    </tr>
+                </table>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/真女2.jpg" alt="晓" class="profile-img">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>贞命天女</p>
+                                <p>今天星期几</p>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/帽子男.jpg" alt="冇眼睇" class="profile-img">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>冇眼睇</p>
+                                <p>你啊嘛击败</p>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/真女.jpg" alt="晓" class="profile-img">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>晓欣</p>
+                                <p>我的钱及时还？</p>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/女孩.jpg" alt="晓" class="profile-img">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>小孩子</p>
+                                <p>我还会你~</p>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/荷塘月色.jpg" alt="晓" class="profile-img imgup">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>大诗</p>
+                                <p>我最近要复出了</p>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/美女.jpg" alt="晓" class="profile-img imgup">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>小童</p>
+                                <p>不能啦你~</p>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </li>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/真女2.jpg" alt="晓" class="profile-img ">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1" style="background-color: darkgrey;">
+                                <p>小不点</p>
+                                <p>walao 你会不会的哦</p>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+
+            </li>
+        </ul>
+
+    </div>
+
+
+    <!--middle right-->
+
+    <div class="height-full">
+        <!--<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">逢甲24H購物</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">首頁 <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="signin.html" role="button">
+                        登入</a>
+                </form>
+            </div>
+        </nav>-->
+        <!--nav-->
+        <ul id="navb">
+            <li>
+                <ul class="show-chat">
+                    <li class="list">
+                        <div class="p-img-middle">
+                            <img src="../img/bro不要玩.jpg" alt="晓" style="height:40px">
+                        </div>
+                    </li>
+                    <li class="list">
+                        <div class="p-img-middle">
+                            <img src="../img/curry.jpg" alt="晓" style="width:55px">
+                        </div>
+                    </li>
+
+                    <li class="list">
+                        <div class="p-img-middle">
+                            <img src="../img/水壶.jpg" alt="晓" class="profile-img-middle imgup">
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li style="float:right"><a href="#home">Home</a></li>
+            <li style="float:right"><a href="#news">News</a></li>
+            <li style="float:right"><a href="#contact">Contact</a></li>
+            <li style="float:right"><a class="active" href="#about">About</a></li>
+        </ul>
+        <!--nav-->
+
+        <!--RIGHTSIDE 聊天室内-->
+        <div class="height-full w3-hide-small rightside" style="background-color: aqua;">
+            <!--user1-->
+            <div class="list">
+                <h2>first</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user2-->
+            <div class="list fade">
+                <h2>second</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user3-->
+            <div class="list fade">
+                <h2>third</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user4-->
+            <div class="list">
+                <h2>forth</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user5-->
+            <div class="list">
+                <h2>fifth</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user6-->
+            <div class="list">
+                <h2>sixth</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user7-->
+            <div class="list">
+                <h2>seventh</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user8-->
+            <div class="list">
+                <h2>eigth</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="height-full middle content" style="background-color: blue;">
+            <!--user1-->
+            <div class="list">
+                <h2>user1</h2>
+                <p>user1 an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user2-->
+            <div class="list">
+                <h2>user2</h2>
+                <p>user2 an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user3-->
+            <div class="list">
+                <h2>user3</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+            <!--user4-->
+            <div class="list">
+                <h2>user4</h2>
+                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
