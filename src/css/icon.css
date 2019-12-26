@@ -1,6 +1,16 @@
+body{
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+}
+
+
+
+
 /*图片*/
 .profile-img{
     max-width: 60px;
+}
+.profile-img-right{
+    max-width: 150px;
 }
 .profile-img:hover{
     max-width: 58px;
@@ -10,6 +20,14 @@
 .imgup{
     position: relative;
     top: -20px;
+}
+.imgup-middle{
+    position: relative;
+    top: -15px;
+}
+.imgup-chat{
+    position: relative;
+    top: -13px;
 }
 /*图片*/
 /*图片框*/
@@ -79,6 +97,17 @@
 }
 .profile-img-middle{
     max-width: 40px;
+}
+.profile-img-chat{
+    max-width: 33px;
+}
+.p-img-right{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    transition: width 0.3s, height 0.3s,margin-top 0.3, margin-left 0.3;
+    text-align: center;
 }
 /*图片圆框 chat*/
 
@@ -163,6 +192,8 @@ table tr td{
     padding: 0;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
+    border: 1px solid #eee;
+    box-shadow: 0 1px 1px 0 rgba(182, 181, 181, 0.24), 0 2px 2px 0 rgba(194, 194, 194, 0.19);
     position: fixed;
     top: 0;
     right: 0;
@@ -190,3 +221,22 @@ table tr td{
     background-color: rgb(32, 110, 255);
   }
   /*nav*/
+
+  #navb-left {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 50px;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-name{
+    display: flex;
+    flex-direction: row;
+  }

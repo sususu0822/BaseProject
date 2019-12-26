@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="height-full">
+<html class="height-full" x>
 
 <head>
     <title>Chat</title>
@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="../css/icon.css">
     <link rel="stylesheet" type="text/css" href="../css/scroll.css">
+    <link rel="stylesheet" type="text/css" href="../css/chat.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
     <style>
@@ -20,13 +22,14 @@
             margin-left: 0px;
             margin-right: 0px;
         }
+
         /* 三个区*/
         #leftside {
             position: relative;
             overflow: scroll;
             width: 25%;
             float: left;
-            /*border: 1px solid #ccc;*/
+            border: 1px solid #ddd;
             border-radius: 5px;
             padding-top: 20px;
             padding-bottom: 10px;
@@ -50,7 +53,7 @@
 
         }
 
-        .rightside {
+        #rightside {
             width: 25%;
             float: right;
             /*border: 1px solid #ccc;*/
@@ -65,6 +68,7 @@
         #rightside::-webkit-scrollbar {
             width: 0 !important
         }
+
         /* 三个区*/
 
         /*选取 contact leftside*/
@@ -92,107 +96,72 @@
         }
     </style>
 
-    <script>
-        $(function () {
-            //获取点击事件的对象
-            $(".nav li").click(function () {
-                //获取要显示或隐藏的对象
-                var divShow = $(".content").children('.list');
-                var divShow1 = $(".rightside").children('.list');
-                var divShow2 = $(".show-chat").children('.list');
-                //判断当前对象是否被选中，如果没选中的话进入if循环
-                if (!$(this).hasClass('selected')) {
-                    //获取当前对象的索引
-                    var index = $(this).index();
-                    //当前对象添加选中样式并且其同胞移除选中样式；
-                    $(this).addClass('selected').siblings('li').removeClass('selected');
-                    //索引对应的div块显示
-                    $(divShow[index]).show();
-                    $(divShow1[index]).show();
-                    $(divShow2[index]).show();
-                    //索引对应的div块的同胞隐藏
-                    $(divShow[index]).siblings('.list').hide();
-                    $(divShow1[index]).siblings('.list').hide();
-                    $(divShow2[index]).siblings('.list').hide();
-                }
-            });
-        });
-    </script>
-
+    <script type="text/javascript" src="../js/sound.js"></script>
 </head>
 
 <body class="height-full">
     <div class="height-full" id="leftside">
         <ul id="contacts" class="nav">
 
-            <li class="selected">
-                <div class="chat-border ">
-                    <table style="max-width: 100%;">
-                        <tr>
-                            <td style="width: 70px;">
-                                <div class="p-img">
-                                    <img src="../img/bro不要玩.jpg" alt="晓" style="height:60px">
-                                </div>
-                            </td>
-                            <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
-                                <div class="w3-hide-medium w3-hide-small message1">
-                                    <p>BRO</p>
-                                    <p>BRO不要玩~</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="chat-icon-size"></div>
-                            </td>
+            <li class="chat-border selected">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/bro不要玩.jpg" alt="晓" style="height:60px">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>BRO</p>
+                                <p>BRO不要玩~</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="chat-icon-size"></div>
+                        </td>
 
-                        </tr>
-                    </table>
-
-                </div>
+                    </tr>
+                </table>
             </li>
-            <li>
-                <div class="chat-border">
-                    <table style="max-width: 100%;">
-                        <tr>
-                            <td style="width: 70px;">
-                                <div class="p-img">
-                                    <img src="../img/curry.jpg" alt="晓" style="width:80px">
-                                </div>
-                            </td>
-                            <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
-                                <div class="w3-hide-medium w3-hide-small message1">
-                                    <p>库里</p>
-                                    <p>偷偷告诉你，我一秒钟的薪水比你一年还多~</p>
-                                </div>
-                            </td>
+            <li class="chat-border">
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/curry.jpg" alt="晓" style="width:80px">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>库里</p>
+                                <p>偷偷告诉你，我一秒钟的薪水比你一年还多~</p>
+                            </div>
+                        </td>
 
-                        </tr>
-                    </table>
-
-                </div>
-
+                    </tr>
+                </table>
             </li>
-            <li>
-                <button class="button button3">
-                    <div class="chat-border">
-                        <table style="max-width: 100%;">
-                            <tr>
-                                <td style="width: 70px;">
-                                    <div class="p-img">
-                                        <img src="../img/水壶.jpg" alt="晓" class="profile-img imgup">
-                                    </div>
-                                </td>
-                                <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
-                                    <div class="w3-hide-medium w3-hide-small message1">
-                                        <p>你阿嫲击败</p>
-                                        <p>讲你两句就在那边静静。要怎样成功你~</p>
-                                    </div>
-                                </td>
+            <li class="chat-border">
 
-                            </tr>
-                        </table>
+                <table style="max-width: 100%;">
+                    <tr>
+                        <td style="width: 70px;">
+                            <div class="p-img">
+                                <img src="../img/水壶.jpg" alt="晓" class="profile-img imgup">
+                            </div>
+                        </td>
+                        <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
+                            <div class="w3-hide-medium w3-hide-small message1">
+                                <p>你阿嫲击败</p>
+                                <p>讲你两句就在那边静静。要怎样成功你~</p>
+                            </div>
+                        </td>
 
-                    </div>
-                </button>
+                    </tr>
+                </table>
+
+
             </li>
             <li class="chat-border">
                 <table style="max-width: 100%;">
@@ -362,7 +331,7 @@
                             </div>
                         </td>
                         <td class="w3-hide-medium w3-hide-small" style="margin-right: 10px;">
-                            <div class="w3-hide-medium w3-hide-small message1" style="background-color: darkgrey;">
+                            <div class="w3-hide-medium w3-hide-small message1">
                                 <p>小不点</p>
                                 <p>walao 你会不会的哦</p>
                             </div>
@@ -398,25 +367,95 @@
                 </form>
             </div>
         </nav>-->
+
+        <ul id="navb-left">
+            <li>
+                <div class="p-img-middle">
+                    <img src="../img/我的大头.jpg" alt="晓" style="height:40px">
+                </div>
+                
+            </li>
+            <li>
+                <h2><strong>&nbsp;Chats</strong></h3>
+            </li>
+        </ul>
         <!--nav-->
         <ul id="navb">
             <li>
                 <ul class="show-chat">
-                    <li class="list">
+                    <li class="list profile-name">
                         <div class="p-img-middle">
                             <img src="../img/bro不要玩.jpg" alt="晓" style="height:40px">
+                            
                         </div>
+                        <h6><strong>&nbsp;BRO</strong></h6>
                     </li>
-                    <li class="list">
+                    <li class="list profile-name" style="display:none;">
                         <div class="p-img-middle">
                             <img src="../img/curry.jpg" alt="晓" style="width:55px">
                         </div>
+                        <h6><strong>&nbsp;库里</strong></h6>
                     </li>
 
-                    <li class="list">
+                    <li class="list profile-name" style="display:none;"> 
                         <div class="p-img-middle">
-                            <img src="../img/水壶.jpg" alt="晓" class="profile-img-middle imgup">
+                            <img src="../img/水壶.jpg" alt="晓" class="profile-img-middle imgup-middle">
                         </div>
+                        <h6><strong>&nbsp;你啊嘛击败</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle">
+                            <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-middle">
+                        </div>
+                        <h6><strong>&nbsp;小童</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle">
+                            <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-middle">
+                        </div>
+                        <h6><strong>&nbsp;小童</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle">
+                            <img src="../img/真女2.jpg" alt="贞命天女" class="profile-img-middle">
+                        </div>
+                        <h6><strong>&nbsp;贞命天女</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle">
+                            <img src="../img/帽子男.jpg" alt="冇眼睇" class="profile-img-middle">
+                        </div>
+                        <h6><strong>&nbsp;冇眼睇</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle">
+                            <img src="../img/真女.jpg" alt="冇眼睇" class="profile-img-middle">
+                        </div>
+                        <h6><strong>&nbsp;晓欣</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle">
+                            <img src="../img/女孩.jpg" alt="晓" class="profile-img-middle">
+                        </div>
+                        <h6><strong>&nbsp;小孩子</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle">
+                            <img src="../img/荷塘月色.jpg" alt="大诗" class="profile-img-middle imgup-middle">
+                        </div>
+                        <h6><strong>&nbsp;大诗</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle">
+                            <img src="../img/美女.jpg" alt="晓" class="profile-img-middle imgup-chat imgup-middle">
+                        </div>
+                        <h6><strong>&nbsp;小童</strong></h6>
+                    </li>
+                    <li class="list profile-name" style="display:none;">
+                        <div class="p-img-middle " >
+                            <img src="../img/真女2.jpg" alt="小不点" class="profile-img-middle ">
+                        </div>
+                        <h6><strong>&nbsp;小不点</strong></h6>
                     </li>
                 </ul>
             </li>
@@ -429,9 +468,12 @@
         <!--nav-->
 
         <!--RIGHTSIDE 聊天室内-->
-        <div class="height-full w3-hide-small rightside" style="background-color: aqua;">
+        <div  id="rightside" class="height-full w3-hide-small" style="background-color: aqua;">
             <!--user1-->
             <div class="list">
+                <div class="p-img-right">
+                    <img src="../img/真女.jpg" alt="晓" class="profile-img-right">
+                </div>
                 <h2>first</h2>
                 <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
@@ -482,33 +524,640 @@
         </div>
 
 
-        <div class="height-full middle content" style="background-color: blue;">
+        <div class="height-full middle content">
             <!--user1-->
-            <div class="list">
-                <h2>user1</h2>
-                <p>user1 an image into a card background and use .card-img-overlay to overlay the card's text:
-                </p>
+            <div class="list wrap">
+                <div class="contentWrap">
+                    <ul id="chatList">
+                        <li class="item_me">
+                            <div class="chatContent">诶 傻子说傻话
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/bro不要玩.jpg" alt="晓" style="height:33px">
+                            </div>
+                            <div class="chatContent">奔跑吧，兄弟！（滚犊子）
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">这里我就不多说了，上来就是一梭子代码……
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/bro不要玩.jpg" alt="晓" style="height:33px">
+                            </div>
+                            <div class="chatContent">大彬哥，你说你咋这么优秀呢？看见你我有一种大海的感觉
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">老妹儿，你是不是喜欢上我了呢……
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/bro不要玩.jpg" alt="晓" style="height:33px">
+                            </div>
+                            <div class="chatContent">BRO不要玩~
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="keyboard">
+                        <i class="material-icons">
+                            keyboard
+                        </i>
+                    </div>
+                    <div class="sayBtn">
+                        <span id="sendBtn" class="sendBtn">按下 说话</span>
+                    </div>
+                    <div class="icon"><i class="material-icons">
+                            sentiment_satisfied
+                        </i></div>
+                    <div class="add"><i class="material-icons">
+                            add_circle_outline
+                        </i></div>
+                </footer>
+
+
+
+
             </div>
             <!--user2-->
-            <div class="list">
-                <h2>user2</h2>
-                <p>user2 an image into a card background and use .card-img-overlay to overlay the card's text:
-                </p>
+            <div class="list wrap">
+                <div class="contentWrap">
+                    <ul id="chatList2">
+                        <li class="item_me">
+                            <div class="chatContent">hi~BRO
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/curry.jpg" alt="晓" style="width:44px">
+                            </div>
+                            <div class="chatContent">WHO
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">I like you and your teams.
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/curry.jpg" alt="晓" style="width:44px">
+                            </div>
+                            <div class="chatContent">Thx for u support. I'm not coming back lately.
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">The NBA is different without you.
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/curry.jpg" alt="晓" style="width:44px">
+                            </div>
+                            <div class="chatContent">nba has a lot of good games to watch.
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/curry.jpg" alt="晓" style="width:44px">
+                            </div>
+                            <div class="chatContent">I see a lot of rookies that are great.
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/curry.jpg" alt="晓" style="width:44px">
+                            </div>
+                            <div class="chatContent">Thank you for supporting me, I'll come back soon.
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="keyboard">
+                        <i class="material-icons">
+                            keyboard
+                        </i>
+                    </div>
+                    <div class="sayBtn">
+                        <span id="sendBtn2" class="sendBtn">按下 说话</span>
+                    </div>
+                    <div class="icon"><i class="material-icons">
+                            sentiment_satisfied
+                        </i></div>
+                    <div class="add"><i class="material-icons">
+                            add_circle_outline
+                        </i></div>
+                </footer>
+
+
+
+
             </div>
             <!--user3-->
-            <div class="list">
-                <h2>user3</h2>
-                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
-                </p>
+            <div class="list wrap">
+                <div class="contentWrap">
+                    <ul id="chatList3">
+                        <li class="item_me">
+                            <div class="chatContent">我的名字叫名字
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/水壶.jpg" alt="水壶" class="profile-img-chat imgup-chat">
+                            </div>
+                            <div class="chatContent">这个自我介绍方式
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">从小老师，就认为我是想要惹事。
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/水壶.jpg" alt="水壶" class="profile-img-chat imgup-chat"> </div>
+                            <div class="chatContent">我热爱文字<br>我讨厌公式<br>我不想面对考试
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">我更讨厌你规定我的头发款式。😤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/水壶.jpg" alt="水壶" class="profile-img-chat imgup-chat"> </div>
+                            <div class="chatContent">我的思考方式<br>没有人能够抑制
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">大人都故事的怪我固执 不懂事😥
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/水壶.jpg" alt="水壶" class="profile-img-chat imgup-chat"> </div>
+                            <div class="chatContent">我明白 待人处事 都有 它的模式！
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">但不代表，全部人都要变成孔子😱
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/水壶.jpg" alt="水壶" class="profile-img-chat imgup-chat"> </div>
+                            <div class="chatContent">我的思考方式<br>没有人能够抑制
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">从小老师，就认为我是想要惹事。
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/水壶.jpg" alt="水壶" class="profile-img-chat imgup-chat"> </div>
+                            <div class="chatContent">我热爱文字<br>我讨厌公式<br>我不想面对考试
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">我更讨厌你规定我的头发款式。
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/水壶.jpg" alt="水壶" class="profile-img-chat imgup-chat"> </div>
+                            <div class="chatContent">我的思考方式<br>没有人能够抑制
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="keyboard">
+                        <i class="material-icons">
+                            keyboard
+                        </i>
+                    </div>
+                    <div class="sayBtn">
+                        <span id="sendBtn3" class="sendBtn">按下 说话</span>
+                    </div>
+                    <div class="icon"><i class="material-icons">
+                            简单
+                        </i></div>
+                    <div class="add"><i class="material-icons">
+                            add_circle_outline
+                        </i></div>
+                    <input type="text" id="message3">
+                    <button><div class="smsbtn" onclick="sendMessage()">发送</div></button>
+                    
+                </footer>
+
+
+
+
             </div>
             <!--user4-->
-            <div class="list">
-                <h2>user4</h2>
-                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
-                </p>
+            <div class="list wrap">
+                <div class="contentWrap">
+                    <ul id="chatList4">
+                        <li class="item_me">
+                            <div class="chatContent">今天幾號
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">聖誕節的隔天
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">所以幾號
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">聖誕節的明天
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">聖誕節幾號😡
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">==
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">看什麽看，沒有看過美女啊
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="keyboard">
+                        <i class="material-icons">
+                            keyboard
+                        </i>
+                    </div>
+                    <div class="sayBtn">
+                        <span id="sendBtn4" class="sendBtn">按下 说话</span>
+                    </div>
+                    <div class="icon"><i class="material-icons">
+                            picture
+                        </i></div>
+                    <div class="add"><i class="material-icons">
+                            add
+                        </i></div>
+                </footer>
+
+
+
+
+            </div>
+             <!--user5-->
+             <div class="list wrap">
+                <div class="contentWrap">
+                    <ul id="chatList5">
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li> 
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+
+                        </li>
+                        
+                        <li class="item_me">
+                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                       
+                        <li class="item_me">
+                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="keyboard">
+                        <i class="material-icons">
+                            keyboard
+                        </i>
+                    </div>
+                    <div class="sayBtn">
+                        <span id="sendBtn5" class="sendBtn">按下 说话</span>
+                    </div>
+                    <div class="icon"><i class="material-icons">
+                            picture
+                        </i></div>
+                    <div class="add"><i class="material-icons">
+                            add
+                        </i></div>
+                </footer>
+
+
+
+
             </div>
 
         </div>
+
     </div>
 
 
