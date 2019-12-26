@@ -468,10 +468,23 @@
                 </ul>
             </li>
 
-            <li style="float:right"><a href="#home">Home</a></li>
-            <li style="float:right"><a href="#news">News</a></li>
-            <li style="float:right"><a href="#contact">Contact</a></li>
+            <li style="float:right"><a href="#" onclick="doubleCheck()">Home</a></li>
+            <li style="float:right"><a href="#news" onclick="norequire()">News</a></li>
+            <li style="float:right"><a href="#contact" onclick="norequire()">Contact</a></li>
             <li style="float:right"><a class="active" href="#about">About</a></li>
+            <script>
+                function norequire() {
+                    alert("目前沒有這項服務");
+                }
+                function doubleCheck() {
+                    var checkAgain;
+                    if (confirm("你真的要離開嗎?")) {
+                        window.location.href = "file:///C:/Users/SUSUSU/OneDrive/%E6%A1%8C%E9%9D%A2/baseProject/BaseProject/src/html/index.html";
+                    } else {
+                        alert("沒差啊我沒差啊");
+                    }
+                }
+            </script>
         </ul>
         <!--nav-->
 
@@ -600,7 +613,7 @@
                 </div>
                 <footer class="footer">
                     <button class="button" style="vertical-align:middle; left: 50%;" data-toggle="collapse"
-                        data-target="#demo"><span  style="color: #FFE4C4;">+</span></button>
+                        data-target="#demo"><span style="color: #FFE4C4;">+</span></button>
                     <div class="sayBtn">
                         <span id="sendBtn" class="sendBtn">按下 说话</span>
                     </div>
