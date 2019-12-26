@@ -369,56 +369,57 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }, false);
 
-function sendMessage1(){
+function sendMessage1() {
     var input = document.getElementById("message1").value;/*從輸入框取資料 */
     console.log()
-    if(input == ""){
+    if (input == "") {
     }
-    else{
+    else {
         var newbox = document.createElement("li");/*新建li */
         newbox.classList.add('item_me');    /*爲他加 class */
         newbox.innerHTML = `<div class="chatContent">
-                                <span class="bot"></span>`+input+`
+                                <span class="bot"></span>`+ input + `
                                 <span class="top"></span>
                             </div>
 
                             <div class="avatar">
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
-                            </div> `;              
+                            </div> `;
         document.getElementById("chatList").appendChild(newbox);
+        document.getElementById("bros").innerHTML = input;
         document.getElementById("message1").value = "";/*訊息發出去后 自動清空*/
     }
 }
-function sendMessage2(){
+function sendMessage2() {
     var input = document.getElementById("message2").value;/*從輸入框取資料 */
     console.log()
-    if(input == ""){
+    if (input == "") {
     }
-    else{
+    else {
         var newbox = document.createElement("li");/*新建li */
         newbox.classList.add('item_me');    /*爲他加 class */
         newbox.innerHTML = `<div class="chatContent">
-                                <span class="bot"></span>`+input+`
+                                <span class="bot"></span>`+ input + `
                                 <span class="top"></span>
                             </div>
 
                             <div class="avatar">
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
-                            </div> `;            
+                            </div> `;
         document.getElementById("chatList2").appendChild(newbox);
         document.getElementById("message2").value = "";/*訊息發出去后 自動清空*/
     }
 }
-function sendMessage3(){
+function sendMessage3() {
     var input = document.getElementById("message3").value;/*從輸入框取資料 */
     console.log()
-    if(input == ""){
+    if (input == "") {
     }
-    else{
+    else {
         var newbox = document.createElement("li");/*新建li */
         newbox.classList.add('item_me');    /*爲他加 class */
         newbox.innerHTML = `<div class="chatContent">
-                                <span class="bot"></span>`+input+`
+                                <span class="bot"></span>`+ input + `
                                 <span class="top"></span>
                             </div>
 
@@ -426,47 +427,48 @@ function sendMessage3(){
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
                             </div> `;
         /*var child = document.createTextNode(input);
-        newbox.appendChild(child);  */                
+        newbox.appendChild(child);  */
         document.getElementById("chatList3").appendChild(newbox);
         document.getElementById("message3").value = "";/*訊息發出去后 自動清空*/
     }
 }
-function sendMessage4(){
+function sendMessage4() {
     var input = document.getElementById("message4").value;/*從輸入框取資料 */
     console.log()
-    if(input == ""){
+    if (input == "") {
     }
-    else{
+    else {
+        console.log()
         var newbox = document.createElement("li");/*新建li */
         newbox.classList.add('item_me');    /*爲他加 class */
         newbox.innerHTML = `<div class="chatContent">
-                                <span class="bot"></span>`+input+`
+                                <span class="bot"></span>`+ input + `
                                 <span class="top"></span>
                             </div>
 
                             <div class="avatar">
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
-                            </div> `;            
+                            </div> `;
         document.getElementById("chatList4").appendChild(newbox);
         document.getElementById("message4").value = "";/*訊息發出去后 自動清空*/
     }
 }
-function sendMessage5(){
+function sendMessage5() {
     var input = document.getElementById("message5").value;/*從輸入框取資料 */
     console.log()
-    if(input == ""){
+    if (input == "") {
     }
-    else{
+    else {
         var newbox = document.createElement("li");/*新建li */
         newbox.classList.add('item_me');    /*爲他加 class */
         newbox.innerHTML = `<div class="chatContent">
-                                <span class="bot"></span>`+input+`
+                                <span class="bot"></span>`+ input + `
                                 <span class="top"></span>
                             </div>
 
                             <div class="avatar">
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
-                            </div> `;            
+                            </div> `;
         document.getElementById("chatList5").appendChild(newbox);
         document.getElementById("message5").value = "";/*訊息發出去后 自動清空*/
     }
@@ -479,7 +481,7 @@ function sendMessage5(){
 
 
 
-document.oncontextmenu = function() {
+document.oncontextmenu = function () {
     return false;
 }
 // 创建一个录音对象
@@ -494,11 +496,11 @@ var mp3Blob,
     oHideTips = document.querySelector('.hide-tips-wrap'),
     oMarkIcon = oHideTips.querySelector('.tips-icon'),
     oTipsTxt = oHideTips.querySelector('.tips-txt');
-oBtn.addEventListener('touchstart', function() {
+oBtn.addEventListener('touchstart', function () {
     recorder.start();
     oHideTips.style.display = 'block';
 });
-oBtn.addEventListener('touchend', function() {
+oBtn.addEventListener('touchend', function () {
     recorder.stop();
     recorder.getMp3Blob(function (blob) {
         mp3Blob = blob;
@@ -527,14 +529,14 @@ oBtn.addEventListener('touchend', function() {
         oImg.src = '../images/picture.jpg';
         oSpanPlay.className = 'play-wrap';
         oNumberBox.className = 'num-box';
-        setTimeout(function() {
-            var nDuration = conversionTime( oAudio.duration );
+        setTimeout(function () {
+            var nDuration = conversionTime(oAudio.duration);
             // 判断时间是否少于一秒
-            if( isNaN(nDuration) || nDuration == 0 ) {
+            if (isNaN(nDuration) || nDuration == 0) {
                 oMarkIcon.style.backgroundImage = 'url(../images/mark.png)';
                 oTipsTxt.innerText = '说话时间太短';
                 // 关闭提示层
-                setTimeout(function() {
+                setTimeout(function () {
                     oHideTips.style.display = 'none';
                     oMarkIcon.style.backgroundImage = 'url(../images/voice.png)';
                     oTipsTxt.innerText = '松开发送消息';
@@ -556,12 +558,12 @@ oBtn.addEventListener('touchend', function() {
                 oSpanPlay.style.width = nDuration / 60 * nSpanTotalWidth + oSpanPlay.offsetWidth - 2 + 'px';
                 var bMark = true;
                 // 播放语音
-                oSpanPlay.onclick = function() {
-                    if( bMark ) {
+                oSpanPlay.onclick = function () {
+                    if (bMark) {
                         this.style.backgroundImage = 'url(../images/voiceplayer1.gif)';
                         oAudio.play();
-                        oAudio.addEventListener('timeupdate', function() {
-                            if( this.ended ) {
+                        oAudio.addEventListener('timeupdate', function () {
+                            if (this.ended) {
                                 oSpanPlay.style.backgroundImage = 'url(../images/voice2.png)';
                             }
                         });
@@ -572,7 +574,7 @@ oBtn.addEventListener('touchend', function() {
                     bMark = !bMark;
                 }
                 // 关闭提示层
-                setTimeout(function() {
+                setTimeout(function () {
                     oHideTips.style.display = 'none';
                 }, 500);
             }
@@ -580,11 +582,11 @@ oBtn.addEventListener('touchend', function() {
     });
 });
 // 转换毫秒时间为秒
-function conversionTime( t ){
-    var s = Math.floor( t % 60 );
+function conversionTime(t) {
+    var s = Math.floor(t % 60);
     return s;
 }
 // 获取样式
-function getStyle( obj, attr ) {
+function getStyle(obj, attr) {
     return window.getComputedStyle(obj, null)[attr]
 }
