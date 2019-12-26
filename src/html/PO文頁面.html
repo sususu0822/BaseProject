@@ -22,6 +22,7 @@
                     <a class="nav-link" href="index.html">首頁 <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+            <a href="../html/作業考試頁面.html"><img src="../img/鈴鐺.png" alt="鈴鐺" width="70" height="70"></a>
             <form class="form-inline mt-2 mt-md-0">
                 <a class="btn btn-outline-success my-2 my-sm-0" href="../html/登入.html" role="button">
                     登入</a>
@@ -30,18 +31,33 @@
     </nav>
     <br>
     <br>
+
     <div class="container" style="margin-top: 30px;">
         <form>
             <div class="form-group">
-                <label for="input-temp" id="label-temp">請輸入想PO的版頁</label>
-                <input type="text" class="form-control" id="name" />
+                <h1>請選擇想PO的版面</h1>
+                <br>
+                <input type="radio" name="PO" value=""> 八卦版<br>
+                <input type="radio" name="PO" value=""> 時事版<br>
+                <input type="radio" name="PO" value=""> 感情版<br>
+                <input type="radio" name="PO" value=""> 廢文版<br>
+                <input type="radio" name="PO" value=""> 遊戲版<br>
             </div>
+
             <div>
-                <label for="input-temp" id="label-temp">請輸入內容</label>
-                <input type="text" class="form-control" id="note">
+                <label for="input-temp" id="label-temp">請輸入內容</label><br>
+                <textarea cols="50" rows="5">
+
+                </textarea>
             </div>
             <br>
             <button type="button" class="btn btn-primary" onclick="convert()">確定</button>
+            <script>
+                function convert() {
+                    alert("input correct");
+                    window.location.href = "file:///C:/Users/SUSUSU/OneDrive/%E6%A1%8C%E9%9D%A2/baseProject/BaseProject/src/html/%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8.html";
+                }
+            </script>
         </form>
     </div>
 
