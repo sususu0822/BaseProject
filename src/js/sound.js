@@ -386,11 +386,7 @@ function sendMessage1() {
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
                             </div> `;
         document.getElementById("chatList").appendChild(newbox);
-<<<<<<< HEAD
-        document.getElementById("bros").innerHTML = input;
-=======
         document.getElementById("renew1").innerHTML = input;
->>>>>>> master
         document.getElementById("message1").value = "";/*訊息發出去后 自動清空*/
     }
 }
