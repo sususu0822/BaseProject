@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>各科考試</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        table, th, td {
+          border: 3px solid blue;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark navbar-fixed-top bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="../img/08.jpg" alt="logo" style="width:80px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">首頁 <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <a class="btn btn-outline-success my-2 my-sm-0" href="../html/登入.html" role="button">
+                    登入</a>
+            </form>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <h1 style="margin-left: 200px;">已派出的各科考試</h1>
+    <div class="container" style="margin-top: 50px;">
+        <table style="width:100%">
+            <tr>
+              <th width="25%" style="text-align: center"><span style="font-size:20px">科目</th>
+              <th width="30%" style="text-align: center"><span style="font-size:20px">考試內容</th> 
+              <th width="30%" style="text-align: center"><span style="font-size:20px">剩餘時間(由少至多)</th>
+              <th width="15%" style="text-align: center"><span style="font-size:20px">教室</th> 
+            </tr>
+            <tr>
+              <td>資料結構實習</td>
+              <td>第6章上機小考</td>
+              <td>1天 2小時</span></td>
+              <td>資電 B19</td>
+            </tr>
+            <tr>
+              <td>離散數學</td>
+              <td>Quiz 6th (Chapter 9)</td>
+              <td>1天 8小時</td>
+              <td>忠 B03</td>
+            </tr>
+            <tr>
+              <td>軟體工程導論</td>  
+              <td><span style="color:red">***</span>期末專題 DEMO<span style="color:red">***</span></td>
+              <td>3天 15小時</td>
+              <td>資電 235</td>
+            </tr>
+            <tr>
+                <td>Web程式設計</td>
+                <td>專題進度展示</td>
+                <td>8天 3小時</td>
+                <td>忠 B08</td>
+            </tr>
+            <tr>
+                <td>離散數學</td>
+                <td><span style="color:red">***</span>期末考試 chapter6,8,9,10<span style="color:red">***</span></td>
+                <td>10天 4小時</td>
+                <td>忠 B03</td>
+            </tr>
+          </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
