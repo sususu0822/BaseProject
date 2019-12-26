@@ -38,6 +38,13 @@
     <br>
     <div class="container-fluid">
         <div class="card">
+            <ul id="list">
+                <li>ㄟ~</li>
+                <li>ㄟㄟ~</li>
+                <li>廠廠</li>
+                <li>席包子</li>
+                <li>一個國家不能有兩個領導人</li>
+            </ul>
             <div class="row justify-content-center">
                 <img src="../img/DATA.jpg" alt="">
             </div>
@@ -47,8 +54,17 @@
                 <button type="button" class="btn btn-primary" onclick="convert()">送出</button>
                 <script>
                     function convert() {
-                        alert("資料送出");
-                        document.getElementById("bb").value = "";
+                        var textbox = document.getElementById("bb").value;
+                        console.log()
+                        if (textbox == "") {
+                            alert("打些東西吧!");
+                        } else {
+                            alert("資料送出");
+                            var node = document.createElement("LI");
+                            var textnode = document.createTextNode(textbox);
+                            node.appendChild(textnode);
+                            document.getElementById("list").appendChild(node);
+                        }
                     }
                 </script>
             </div>
