@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../css/icon.css">
     <link rel="stylesheet" type="text/css" href="../css/scroll.css">
     <link rel="stylesheet" type="text/css" href="../css/chat.css">
+    <link rel="stylesheet" type="text/css" href="../css/animatebutton.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
@@ -29,9 +30,9 @@
             overflow: scroll;
             width: 25%;
             float: left;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            padding-top: 20px;
+            padding-top: 25px;
             padding-bottom: 10px;
             /* -ms-overflow-style: none;
             overflow: -moz-scrollbars-none;*/
@@ -96,7 +97,14 @@
         }
     </style>
 
-    <script type="text/javascript" src="../js/sound.js"></script>
+    <script type="text/javascript" src="../js/sound.js">
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </head>
 
 <body class="height-full">
@@ -373,7 +381,7 @@
                 <div class="p-img-middle">
                     <img src="../img/我的大头.jpg" alt="晓" style="height:40px">
                 </div>
-                
+
             </li>
             <li>
                 <h2><strong>&nbsp;Chats</strong></h3>
@@ -386,7 +394,7 @@
                     <li class="list profile-name">
                         <div class="p-img-middle">
                             <img src="../img/bro不要玩.jpg" alt="晓" style="height:40px">
-                            
+
                         </div>
                         <h6><strong>&nbsp;BRO</strong></h6>
                     </li>
@@ -397,7 +405,7 @@
                         <h6><strong>&nbsp;库里</strong></h6>
                     </li>
 
-                    <li class="list profile-name" style="display:none;"> 
+                    <li class="list profile-name" style="display:none;">
                         <div class="p-img-middle">
                             <img src="../img/水壶.jpg" alt="晓" class="profile-img-middle imgup-middle">
                         </div>
@@ -452,7 +460,7 @@
                         <h6><strong>&nbsp;小童</strong></h6>
                     </li>
                     <li class="list profile-name" style="display:none;">
-                        <div class="p-img-middle " >
+                        <div class="p-img-middle ">
                             <img src="../img/真女2.jpg" alt="小不点" class="profile-img-middle ">
                         </div>
                         <h6><strong>&nbsp;小不点</strong></h6>
@@ -468,7 +476,7 @@
         <!--nav-->
 
         <!--RIGHTSIDE 聊天室内-->
-        <div  id="rightside" class="height-full w3-hide-small" style="background-color: aqua;">
+        <div id="rightside" class="height-full w3-hide-small" style="background-color: aqua;">
             <!--user1-->
             <div class="list">
                 <div class="p-img-right">
@@ -479,13 +487,13 @@
                 </p>
             </div>
             <!--user2-->
-            <div class="list fade">
+            <div class="list">
                 <h2>second</h2>
                 <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
             </div>
             <!--user3-->
-            <div class="list fade">
+            <div class="list">
                 <h2>third</h2>
                 <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
@@ -591,20 +599,16 @@
                     </ul>
                 </div>
                 <footer class="footer">
-                    <div class="keyboard">
-                        <i class="material-icons">
-                            keyboard
-                        </i>
-                    </div>
+                    <button class="button" style="vertical-align:middle; left: 50%;" data-toggle="collapse"
+                        data-target="#demo"><span  style="color: #FFE4C4;">+</span></button>
                     <div class="sayBtn">
                         <span id="sendBtn" class="sendBtn">按下 说话</span>
                     </div>
-                    <div class="icon"><i class="material-icons">
-                            sentiment_satisfied
-                        </i></div>
-                    <div class="add"><i class="material-icons">
-                            add_circle_outline
-                        </i></div>
+
+                    <input type="text" id="message1" name="input" placeholder="  Type a message..." class="textinput">
+                    <button>
+                        <div class="smsbtn" onclick="sendMessage1()">发送</div>
+                    </button>
                 </footer>
 
 
@@ -697,23 +701,22 @@
                     </ul>
                 </div>
                 <footer class="footer">
-                    <div class="keyboard">
-                        <i class="material-icons">
-                            keyboard
-                        </i>
-                    </div>
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <input type="file" class="form-control-file border" name="file">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
                     <div class="sayBtn">
                         <span id="sendBtn2" class="sendBtn">按下 说话</span>
                     </div>
-                    <div class="icon"><i class="material-icons">
-                            sentiment_satisfied
-                        </i></div>
-                    <div class="add"><i class="material-icons">
-                            add_circle_outline
-                        </i></div>
+
+                    <input type="text" id="message2" name="input" placeholder="  Type a message..." class="textinput">
+                    <button>
+                        <div class="smsbtn" onclick="sendMessage2()">发送</div>
+                    </button>
                 </footer>
-
-
 
 
             </div>
@@ -853,23 +856,15 @@
                     </ul>
                 </div>
                 <footer class="footer">
-                    <div class="keyboard">
-                        <i class="material-icons">
-                            keyboard
-                        </i>
-                    </div>
                     <div class="sayBtn">
                         <span id="sendBtn3" class="sendBtn">按下 说话</span>
                     </div>
-                    <div class="icon"><i class="material-icons">
-                            简单
-                        </i></div>
-                    <div class="add"><i class="material-icons">
-                            add_circle_outline
-                        </i></div>
-                    <input type="text" id="message3">
-                    <button><div class="smsbtn" onclick="sendMessage()">发送</div></button>
-                    
+
+                    <input type="text" id="message3" name="input" placeholder="  Type a message..." class="textinput">
+                    <button>
+                        <div class="smsbtn" onclick="sendMessage3()">发送</div>
+                    </button>
+
                 </footer>
 
 
@@ -951,28 +946,18 @@
                     </ul>
                 </div>
                 <footer class="footer">
-                    <div class="keyboard">
-                        <i class="material-icons">
-                            keyboard
-                        </i>
-                    </div>
                     <div class="sayBtn">
                         <span id="sendBtn4" class="sendBtn">按下 说话</span>
                     </div>
-                    <div class="icon"><i class="material-icons">
-                            picture
-                        </i></div>
-                    <div class="add"><i class="material-icons">
-                            add
-                        </i></div>
+                    <input type="text" id="message4" name="input" placeholder="  Type a message..." class="textinput">
+                    <button>
+                        <div class="smsbtn" onclick="sendMessage4()">发送</div>
+                    </button>
                 </footer>
 
-
-
-
             </div>
-             <!--user5-->
-             <div class="list wrap">
+            <!--user5-->
+            <div class="list wrap">
                 <div class="contentWrap">
                     <ul id="chatList5">
                         <li class="item_you">
@@ -999,7 +984,8 @@
                             <div class="avatar">
                                 <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
                             </div>
-                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                            <div class="chatContent">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1009,17 +995,8 @@
                             <div class="avatar">
                                 <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
                             </div>
-                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
-                                <span class="bot"></span>
-                                <span class="top"></span>
-                            </div>
-
-                        </li> 
-                        <li class="item_you">
-                            <div class="avatar">
-                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
-                            </div>
-                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                            <div class="chatContent">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1029,7 +1006,8 @@
                             <div class="avatar">
                                 <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
                             </div>
-                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                            <div class="chatContent">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1039,7 +1017,8 @@
                             <div class="avatar">
                                 <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
                             </div>
-                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                            <div class="chatContent">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1049,7 +1028,8 @@
                             <div class="avatar">
                                 <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
                             </div>
-                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                            <div class="chatContent">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1059,14 +1039,27 @@
                             <div class="avatar">
                                 <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
                             </div>
-                            <div class="chatContent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                            <div class="chatContent">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/可愛女孩.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;❤
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
 
                         </li>
                         <li class="item_me">
-                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="chatContent">
+                                ❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1076,9 +1069,10 @@
                             </div>
 
                         </li>
-                        
+
                         <li class="item_me">
-                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="chatContent">
+                                ❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1086,27 +1080,10 @@
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
                             </div>
                         </li>
-                       
+
                         <li class="item_me">
-                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <span class="bot"></span>
-                                <span class="top"></span>
-                            </div>
-                            <div class="avatar">
-                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
-                            </div>
-                        </li>
-                        <li class="item_me">
-                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <span class="bot"></span>
-                                <span class="top"></span>
-                            </div>
-                            <div class="avatar">
-                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
-                            </div>
-                        </li>
-                        <li class="item_me">
-                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="chatContent">
+                                ❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1115,7 +1092,8 @@
                             </div>
                         </li>
                         <li class="item_me">
-                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="chatContent">
+                                ❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1124,7 +1102,28 @@
                             </div>
                         </li>
                         <li class="item_me">
-                            <div class="chatContent">❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="chatContent">
+                                ❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">
+                                ❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">
+                                ❤&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <span class="bot"></span>
                                 <span class="top"></span>
                             </div>
@@ -1142,6 +1141,179 @@
                     </div>
                     <div class="sayBtn">
                         <span id="sendBtn5" class="sendBtn">按下 说话</span>
+                    </div>
+                    <div class="icon"><i class="material-icons">
+                            picture
+                        </i></div>
+                    <div class="add"><i class="material-icons">
+                            add
+                        </i></div>
+                    <input type="text" id="message5" name="input" placeholder="  Type a message..." class="textinput">
+                    <button>
+                        <div class="smsbtn" onclick="sendMessage5()">发送</div>
+                    </button>
+                </footer>
+
+            </div>
+
+            <!--user6-->
+            <div class="list wrap">
+                <div class="contentWrap">
+                    <ul id="chatList6">
+
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/真女2.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">你懂低清嗎？
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/真女2.jpg" alt="女孩" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">超帥的！
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">今天星期幾
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="keyboard">
+                        <i class="material-icons">
+                            keyboard
+                        </i>
+                    </div>
+                    <div class="sayBtn">
+                        <span id="sendBtn6" class="sendBtn">按下 说话</span>
+                    </div>
+                    <div class="icon"><i class="material-icons">
+                            picture
+                        </i></div>
+                    <div class="add"><i class="material-icons">
+                            add
+                        </i></div>
+                </footer>
+
+            </div>
+
+
+            <!--user7-->
+            <div class="list wrap">
+                <div class="contentWrap">
+                    <ul id="chatList7">
+
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/帽子男.jpg" alt="" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">你懂低清嗎？
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/帽子男.jpg" alt="" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">去看
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">你阿嘛擊敗
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="keyboard">
+                        <i class="material-icons">
+                            keyboard
+                        </i>
+                    </div>
+                    <div class="sayBtn">
+                        <span id="sendBtn7" class="sendBtn">按下 说话</span>
+                    </div>
+                    <div class="icon"><i class="material-icons">
+                            picture
+                        </i></div>
+                    <div class="add"><i class="material-icons">
+                            add
+                        </i></div>
+                </footer>
+            </div>
+
+
+            <!--user8-->
+            <div class="list wrap">
+                <div class="contentWrap">
+                    <ul id="chatList8">
+
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/真女.jpg" alt="" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">你懂低清嗎？
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_you">
+                            <div class="avatar">
+                                <img src="../img/真女.jpg" alt="" class="profile-img-chat">
+                            </div>
+                            <div class="chatContent">去看
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+
+                        </li>
+                        <li class="item_me">
+                            <div class="chatContent">你阿嘛擊敗
+                                <span class="bot"></span>
+                                <span class="top"></span>
+                            </div>
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="keyboard">
+                        <i class="material-icons">
+                            keyboard
+                        </i>
+                    </div>
+                    <div class="sayBtn">
+                        <span id="sendBtn8" class="sendBtn">按下 说话</span>
                     </div>
                     <div class="icon"><i class="material-icons">
                             picture
