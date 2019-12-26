@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        .calendar{
+            width:450px;
+            height:350px;
+            background:#fff;
+            box-shadow:0px 1px 1px rgba(0,0,0,0.1);
+        }
+        .body-list ul{
+            width:100%;
+            font-family:arial;
+            font-weight:bold;
+            font-size:14px;
+        }
+        .body-list ul li{
+            width:14.28%;
+            height:36px;
+            line-height:36px;
+            list-style-type:none;
+            display:block;
+            box-sizing:border-box;
+            float:left;
+            text-align:center;
+        }
+        .lightgrey{
+            color:#a8a8a8; /*浅灰色*/
+        }
+        .darkgrey{
+            color:#565656; /*深灰色*/
+        }
+        .green{
+            color:#6ac13c; /*绿色*/
+        }
+        .greenbox{
+            border:1px solid #6ac13c;
+            background:#e9f8df; /*浅绿色背景*/
+        }
+    </style>
+
+    <title>行事曆</title>
+</head>
+
+<body>
+    <div class="calendar" style="margin: 0px auto;">
+        <div class="title">
+          <h1 class="green" id="calendar-title" style="text-align: center">Month</h1>
+          <h4 class="green" id="calendar-year" style="text-align: center">Year</h4>
+        </div>
+        <div class="body">
+          <div class="lightgrey body-list">
+            <ul>
+              <li>MON</li>
+              <li>TUE</li>
+              <li>WED</li>
+              <li>THU</li>
+              <li>FRI</li>
+              <li>SAT</li>
+              <li>SUN</li>
+            </ul>
+          </div>
+          <div class="darkgrey body-list">
+            <ul id="days">
+            </ul>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>
