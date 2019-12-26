@@ -51,6 +51,30 @@
             padding-bottom: 10px;
         }
     </style>
+
+    <script>
+        var message = ["攝氏", "華氏"];
+
+
+
+    </script>
+    <?php
+        set_time_limit(0);//設定指令碼超時時間為無限，不然在過了超時時間後指令碼會自動關閉，輪詢失敗。
+        $link=new mysqli("host","user","password","database");
+        $search="select sender,receiver,content from msg where receiverRead=0 limit 1";//限制每次讀出一條資料，便於修改其已讀flag
+        $change="update chat set receiverRead=1 where receiverRead=0 limit 1";
+        while (true) { //進入無限迴圈
+　　　　    $res=$link->query($sql); //查詢結果
+　　        if($res->num_rows!=0){ //當有未讀資訊時讀取資訊
+　　　　　　    $link->query($change);//將資訊的已讀flag設為1
+　　　　　　    $msg=$res->fetch_assoc();
+　　　　　　    $jsonstr=json_encode($msg);//取到資訊，將資訊用轉碼為json格式，返回給JS
+　　　　　　    echo $jsonstr;
+　　　　　　    break;//輸出資訊後退出while迴圈，結束當前指令碼
+　　　　    }
+　　        usleep(1000);//如果沒有資訊不會進入if塊，但會執行一下等待1秒，防止PHP因迴圈假死。
+        }
+    ?>
 </head>
 
 <body class="height-full">
@@ -61,7 +85,7 @@
         <div id="contacts" class="nav">
 
 
-            <a class="nav-link active" href="#user1">
+            <a class="nav-link active" data-toggle="collapse" href="#user1">
                 <div class="chat-border ">
                     <table style="max-width: 100%;">
                         <tr>
@@ -85,7 +109,7 @@
 
                 </div>
             </a>
-            <a class="nav-link" href="#user2">
+            <a class="nav-link" data-toggle="collapse" href="#user2">
 
                 <div class="chat-border">
                     <table style="max-width: 100%;">
@@ -315,13 +339,13 @@
 
         <div class="height-full w3-hide-small rightside" style="background-color: aqua;">
             <!--user1-->
-            <div  class="tab-pane active user1">
+            <div class="tab-pane active user1">
                 <h2>third</h2>
                 <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
             </div>
             <!--user2-->
-            <div  class="tab-pane fade user2">
+            <div class="tab-pane fade user2">
                 <h2>third</h2>
                 <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
@@ -344,29 +368,30 @@
 
         <div class="height-full tab-pane middle" style="background-color: blue;">
             <!--user1-->
-            <div class="tab-pane active user1">
+            <div id="user1" class="tab-pane active collapse">
                 <h2>user1</h2>
-                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                <p>user1 an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
             </div>
             <!--user2-->
-            <div class="tab-pane fade user2">
+            <div id="user2" class="tab-pane fade collapse">
                 <h2>user2</h2>
-                <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
+                <p>user2 an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
             </div>
             <!--user3-->
-            <div class="tab-pane fade user3">
+            <div id="user3" class="tab-pane fade collapse">
                 <h2>user3</h2>
                 <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
             </div>
             <!--user4-->
-            <div class="tab-pane fade user4">
+            <div id="user4" class="tab-pane fade collapse">
                 <h2>user4</h2>
                 <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:
                 </p>
             </div>
+            
 
         </div>
 
