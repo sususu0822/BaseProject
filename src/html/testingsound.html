@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微信语音</title>
+    <link rel="stylesheet" href="css/record.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background: #ebebeb;
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(../css/iconfont/MaterialIcons-Regular.eot);
+            /* For IE6-8 */
+            src: local('Material Icons'),
+                local('MaterialIcons-Regular'),
+                url(../css/iconfont/MaterialIcons-Regular.woff) format('woff2'),
+                url(../css/iconfont/MaterialIcons-Regular.woff2) format('woff'),
+                url(../css/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 32px;
+            /* Preferred icon size */
+            display: inline-block;
+            /* line-height: 0.01rem; */
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+        #wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        #header {
+            height: 46px;
+            line-height: 46px;
+            background: #363539;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            justify-content: space-between;
+        }
+
+        #header #left {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            width: 100px;
+        }
+
+        #header #right {
+            display: flex;
+            align-items: center;
+            width: 100px;
+            justify-content: flex-end;
+
+        }
+
+        #header #right i {
+            padding-right: 6px;
+        }
+
+        #header #mid {
+            text-align: center;
+            flex: 1;
+        }
+
+        #contentWrap {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .item_me,
+        .item_audio {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 8px;
+        }
+
+        .item_you {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 8px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+        }
+
+        .avatar img {
+            width: 100%;
+        }
+
+        .item_me .chatContent {
+            padding: 10px;
+            background: #a0e75a;
+            border: 1px solid #6fb44d;
+            margin-right: 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .chatContent span {
+            width: 0;
+            height: 0;
+            font-size: 0;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .item_me .chatContent span.bot {
+            border-width: 8px;
+            border-style: solid dashed dashed;
+            border-color: transparent transparent transparent #6fb44d;
+            right: -17px;
+            top: 10px;
+        }
+
+        .item_me .chatContent span.top {
+            border-width: 8px;
+            border-style: solid dashed dashed;
+            border-color: transparent transparent transparent #a0e75a;
+            right: -15px;
+            top: 10px;
+        }
+
+        .item_you .chatContent {
+            padding: 10px;
+            background: #a0e75a;
+            border: 1px solid #6fb44d;
+            margin-left: 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .item_you .chatContent span.bot {
+            border-width: 8px;
+            border-style: solid dashed dashed;
+            border-color: transparent #6fb44d transparent transparent;
+            left: -17px;
+            top: 10px;
+        }
+
+        .item_you .chatContent span.top {
+            border-width: 8px;
+            border-style: solid dashed dashed;
+            border-color: transparent #a0e75a transparent transparent;
+            left: -15px;
+            top: 10px;
+        }
+
+        #footer {
+            height: 46px;
+            padding: 0 4px;
+            background: #f4f5f6;
+            border-top: 1px solid #d7d7d8;
+            display: flex;
+            align-items: center;
+            color: #7f8389;
+            justify-content: space-around;
+        }
+
+        #sayBtn {
+            flex: 1;
+            display: flex;
+            margin: 0 5px;
+            color: #565656;
+            font-weight: bold;
+        }
+
+        .sendBtn {
+            display: block;
+            flex: 1;
+            padding: 8px;
+            background: #f4f5f6;
+            border: 1px solid #bec2c1;
+            border-radius: 5px;
+            text-align: center;
+
+        }
+
+        .activeBtn {
+            display: block;
+            flex: 1;
+            padding: 8px;
+            background: #c6c7ca;
+            border: 1px solid #bec2c1;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .item_audio .chatContent {
+            padding: 6px;
+            background: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            margin-right: 15px;
+            position: relative;
+            width: 120px;
+            min-height: 20px;
+
+        }
+
+        .item_audio .chatContent span.bot {
+            border-width: 8px;
+            border-style: solid dashed dashed;
+            border-color: transparent transparent transparent #999;
+            right: -17px;
+            top: 10px;
+        }
+
+        .item_audio .chatContent span.top {
+            border-width: 8px;
+            border-style: solid dashed dashed;
+            border-color: transparent transparent transparent #fff;
+            right: -15px;
+            top: 10px;
+        }
+
+        .material-icons_wifi {
+            transform: rotate(90deg);
+            color: #a5a5a5;
+            font-size: 22px;
+        }
+
+        .redDot {
+            background: #f45454;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            margin-right: 10px;
+        }
+    </style>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var oSendBtn = document.getElementById('sendBtn');
+            var soundClips = document.querySelector('.sound-clips');
+            var mediaRecorder;
+            var oChatList = document.getElementById('chatList');
+            navigator.getUserMedia = (navigator.getUserMedia ||
+                navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia ||
+                navigator.msGetUserMedia);
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia(
+                    // constraints - only audio needed for this app
+                    {
+                        audio: true
+                    })
+                    // Success callback
+                    .then(function (stream) {
+                        rec(stream);
+                    })
+
+                    // Error callback
+                    .catch(function (err) {
+                    }
+                    );
+            } else {
+            }
+            function rec(stream) {
+                mediaRecorder = new MediaRecorder(stream);
+                oSendBtn.addEventListener('touchstart', function (ev) {
+                    ev.preventDefault();
+                    this.innerHTML = '松开 结束';
+                    this.classList.add('activeBtn');
+                    mediaRecorder.start();
+                }, false);
+                oSendBtn.addEventListener('touchend', function (ev) {
+                    ev.preventDefault();
+                    this.innerHTML = '按下 说话';
+                    this.classList.remove('activeBtn');
+                    mediaRecorder.stop();
+                }, false);
+                mediaRecorder.ondataavailable = function (e) {
+                    var clipContainer = document.createElement('li');
+                    var audio = document.createElement('audio');
+                    clipContainer.classList.add('item_audio');
+                    clipContainer.innerHTML = `
+                    <div class = "redDot"></div>
+                    <div class="chatContent">
+                        <i class="material-icons material-icons_wifi">wifi</i>
+                        <span class="bot"></span>
+                        <span class="top"></span>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/ava1.png" alt="">
+                    </div>`;
+                    audio.setAttribute('controls', '');
+                    oChatList.appendChild(clipContainer);
+                    var audioURL = window.URL.createObjectURL(e.data);
+                    audio.src = audioURL;
+                    oChatList.addEventListener('touchstart', function (ev) {
+                        if (ev.srcElement.parentNode.className !== 'item_audio') return;
+                        audio.play();
+                        ev.srcElement.parentNode.removeChild(ev.srcElement.parentNode.children[0])
+                    }, false);
+                };
+            }
+        }, false);
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div id="left">
+                <i class="material-icons">
+                    chevron_left
+                </i>
+                微信(184)
+            </div>
+            <div id="mid">艾达·王</div>
+            <div id="right">
+                <i class="material-icons">
+                    more_horiz
+                </i>
+            </div>
+        </header>
+        <div id="contentWrap">
+            <ul >
+                <li class="item_me">
+                    <div class="chatContent">我是不是你最疼爱的人?
+                        <span class="bot"></span>
+                        <span class="top"></span>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/ava1.png" alt="">
+                    </div>
+                </li>
+                <li class="item_you">
+                    <div class="avatar">
+                        <img src="images/ava2.jpg" alt="">
+                    </div>
+                    <div class="chatContent">奔跑吧，兄弟！（滚犊子）
+                        <span class="bot"></span>
+                        <span class="top"></span>
+                    </div>
+
+                </li>
+                <li class="item_me">
+                    <div class="chatContent">这里我就不多说了，上来就是一梭子代码……
+                        <span class="bot"></span>
+                        <span class="top"></span>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/ava1.png" alt="">
+                    </div>
+                </li>
+                <li class="item_you">
+                    <div class="avatar">
+                        <img src="images/ava2.jpg" alt="">
+                    </div>
+                    <div class="chatContent">大彬哥，你说你咋这么优秀呢？看见你我有一种大海的感觉
+                        <span class="bot"></span>
+                        <span class="top"></span>
+                    </div>
+
+                </li>
+                <li class="item_me">
+                    <div class="chatContent">老妹儿，你是不是喜欢上我了呢……
+                        <span class="bot"></span>
+                        <span class="top"></span>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/ava1.png" alt="">
+                    </div>
+                </li>
+                <li class="item_you">
+                    <div class="avatar">
+                        <img src="images/ava2.jpg" alt="">
+                    </div>
+                    <div class="chatContent">不是，我晕船，看见你想吐……
+                        <span class="bot"></span>
+                        <span class="top"></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <footer id="footer">
+            <div id="keyboard">
+                <i class="material-icons">
+                    keyboard
+                </i>
+            </div>
+            <div id="sayBtn">
+                <span id="sendBtn" class="sendBtn">按下 说话</span>
+            </div>
+            <div id="icon"><i class="material-icons">
+                    sentiment_satisfied
+                </i></div>
+            <div id="add"><i class="material-icons">
+                    add_circle_outline
+                </i></div>
+        </footer>
+    </div>
+
+    
+</body>
+
+</html>

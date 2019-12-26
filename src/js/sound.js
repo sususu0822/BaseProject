@@ -386,7 +386,11 @@ function sendMessage1() {
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
                             </div> `;
         document.getElementById("chatList").appendChild(newbox);
+<<<<<<< HEAD
         document.getElementById("bros").innerHTML = input;
+=======
+        document.getElementById("renew1").innerHTML = input;
+>>>>>>> master
         document.getElementById("message1").value = "";/*訊息發出去后 自動清空*/
     }
 }
@@ -407,6 +411,7 @@ function sendMessage2() {
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
                             </div> `;
         document.getElementById("chatList2").appendChild(newbox);
+        document.getElementById("renew2").innerHTML = input;
         document.getElementById("message2").value = "";/*訊息發出去后 自動清空*/
     }
 }
@@ -429,6 +434,7 @@ function sendMessage3() {
         /*var child = document.createTextNode(input);
         newbox.appendChild(child);  */
         document.getElementById("chatList3").appendChild(newbox);
+        document.getElementById("renew3").innerHTML = input;
         document.getElementById("message3").value = "";/*訊息發出去后 自動清空*/
     }
 }
@@ -450,6 +456,7 @@ function sendMessage4() {
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
                             </div> `;
         document.getElementById("chatList4").appendChild(newbox);
+        document.getElementById("renew4").innerHTML = input;
         document.getElementById("message4").value = "";/*訊息發出去后 自動清空*/
     }
 }
@@ -470,7 +477,50 @@ function sendMessage5() {
                                 <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
                             </div> `;
         document.getElementById("chatList5").appendChild(newbox);
+        document.getElementById("renew5").innerHTML = input;
         document.getElementById("message5").value = "";/*訊息發出去后 自動清空*/
+    }
+}
+function sendMessage6(){
+    var input = document.getElementById("message6").value;/*從輸入框取資料 */
+    console.log()
+    if(input == ""){
+    }
+    else{
+        var newbox = document.createElement("li");/*新建li */
+        newbox.classList.add('item_me');    /*爲他加 class */
+        newbox.innerHTML = `<div class="chatContent">
+                                <span class="bot"></span>`+input+`
+                                <span class="top"></span>
+                            </div>
+
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div> `;            
+        document.getElementById("chatList6").appendChild(newbox);
+        document.getElementById("renew6").innerHTML = input;
+        document.getElementById("message6").value = "";/*訊息發出去后 自動清空*/
+    }
+}
+function sendMessage7(){
+    var input = document.getElementById("message7").value;/*從輸入框取資料 */
+    console.log()
+    if(input == ""){
+    }
+    else{
+        var newbox = document.createElement("li");/*新建li */
+        newbox.classList.add('item_me');    /*爲他加 class */
+        newbox.innerHTML = `<div class="chatContent">
+                                <span class="bot"></span>`+input+`
+                                <span class="top"></span>
+                            </div>
+
+                            <div class="avatar">
+                                <img src="../img/我的大头.jpg" alt="晓" style="height:33px">
+                            </div> `;            
+        document.getElementById("chatList7").appendChild(newbox);
+        document.getElementById("renew7").innerHTML = input;
+        document.getElementById("message7").value = "";/*訊息發出去后 自動清空*/
     }
 }
 

@@ -8,6 +8,7 @@ body{
 }
 .profile-img-right{
     max-width: 110px;
+    
 }
 .profile-img:hover{
     max-width: 58px;
@@ -104,7 +105,7 @@ body{
     height: 110px;
     overflow: hidden;
     transition: width 0.3s, height 0.3s,margin-top 0.3, margin-left 0.3;
-    text-align: center;
+   
 }
 /*图片圆框 chat*/
 
@@ -212,6 +213,7 @@ table tr td{
   
   #navb li a:hover:not(.active) {
     background-color: rgb(160, 121, 121);
+    color: aliceblue;
   }
   
   #navb .active {

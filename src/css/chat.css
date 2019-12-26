@@ -186,7 +186,7 @@ body{
     margin: 0 5px;
     color: #565656;
     font-weight: bold;
-    width: 20px;
+    width: 15px;
 }
 
 .sendBtn {
@@ -257,7 +257,7 @@ body{
 
 .textinput{
     border-radius: 18px;
-    width: 560px;
+    width: 450px;
     height: 33px;
     background: #eee;
 }
